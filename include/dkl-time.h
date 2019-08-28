@@ -6,20 +6,21 @@
 
 #pragma once
 
-#include <time.h>
 #include <stdint.h>
 
-typedef enum time_device_e {
-    TIME_REALTIME          ,
-    TIME_MONOTONIC         ,
-    TIME_BOOTTIME          ,
-    TIME_REALTIME_COARSE   ,
-    TIME_MONOTONIC_COARSE  ,
-    TIME_PROCESS_CPUTIME_ID,
-    TIME_THREAD_CPUTIME_ID
+typedef uint64_t tm_t;
+
+typedef enum tm_device_e {
+    TM_REALTIME          ,
+    TM_MONOTONIC         ,
+    TM_BOOTTIME          ,
+    TM_REALTIME_COARSE   ,
+    TM_MONOTONIC_COARSE  ,
+    TM_PROCESS_CPUTIME_ID,
+    TM_THREAD_CPUTIME_ID
     /*TIME_MONOTONIC_ACTIVE*/
-} time_device_t;
+} tm_device_t;
 
-extern time_t timenow(time_device_t dev);
+extern tm_t timenow(tm_device_t dev);
 
-extern void timestrf(char *dest, time_t src, char *fmt);
+extern void timestrf(char *dest, tm_t src, char *fmt);

@@ -8,7 +8,8 @@
 
 #include <main.h>
 
-void timestrf(char *dest, time_t src, char *fmt) {
+void timestrf(char *dest, tm_t src, char *fmt) {
+    time_t _src = src / 1000;
 /*    if (fmt) {
         char      strTime[200];
         struct tm *u;
@@ -21,9 +22,9 @@ void timestrf(char *dest, time_t src, char *fmt) {
     } else {*/
 
     if (fmt) {
-        strftime(dest, 100, fmt, gmtime(&src));
+        strftime(dest, 100, fmt, gmtime(&_src));
     } else {
-        dest = ctime_r(&src, dest);
+        /*dest = */ctime_r(&_src, dest);
 
         size_t len = strlen(dest);
 

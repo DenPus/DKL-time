@@ -10,7 +10,7 @@
 
 /* static */
 
-static uint8_t time_devices[7] = {
+static uint8_t tm_devices[7] = {
         CLOCK_REALTIME,
         CLOCK_MONOTONIC,
         CLOCK_BOOTTIME,
@@ -23,19 +23,19 @@ static uint8_t time_devices[7] = {
 
 /* public */
 
-time_t timenow(time_device_t dev) {
+tm_t timenow(tm_device_t dev) {
     struct timespec spec;
 
     if (dev > 6) {
         dev = 0;
     }
 
-    clock_gettime(time_devices[dev], &spec);
+    clock_gettime(tm_devices[dev], &spec);
 
     // Convert nanoseconds to milliseconds
     float ms = (float) (spec.tv_nsec / 1.0e6);
 
-    time_t dest = (uint32_t) spec.tv_sec;
+    tm_t dest = (tm_t) spec.tv_sec;
     dest *= 1000;
     dest += (uint16_t) ms;
 

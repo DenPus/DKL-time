@@ -17,6 +17,8 @@ DKL time - library for working with time
 
 # Examples results
 
+![Result](/screenshots/now.png)
+
 time passed
 ```
 # 1567074891137 ms

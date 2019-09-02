@@ -24,8 +24,11 @@ void timestrf(char *dest, tm_t src, char *fmt) {
     if (fmt) {
         strftime(dest, 100, fmt, gmtime(&_src));
     } else {
+#if _WIN64
+        /*errno_t e = */ctime_s(dest, 100, &_src);
+#else
         /*dest = */ctime_r(&_src, dest);
-
+#endif
         size_t len = strlen(dest);
 
         if (len) {

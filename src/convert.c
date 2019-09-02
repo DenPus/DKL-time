@@ -15,8 +15,8 @@ struct tm_fmt_item_s tm_fmt_item_ls[8] = {
         {.id = TM_FMT_HOUR, .name = "hour", .val = 3600l * 1000},
         {.id = TM_FMT_DAY, .name = "day", .val = 86400l * 1000},
         {.id = TM_FMT_WEEK, .name = "week", .val = 86400l * 7 * 1000},
-        {.id = TM_FMT_MONTH, .name = "month", .val = 86400l * 30 * 1000},
-        {.id = TM_FMT_YEAR, .name = "year", .val = 86400l * 365 * 1000},
+        {.id = TM_FMT_MONTH, .name = "month", .val = 86400ll * 30 * 1000},
+        {.id = TM_FMT_YEAR, .name = "year", .val = 86400ll * 365 * 1000},
 };
 
 tm_fmt_item_t *tm_get_fmt_item(tm_t time, tm_fmt_t fmt) {
@@ -31,9 +31,9 @@ tm_fmt_item_t *tm_get_fmt_item(tm_t time, tm_fmt_t fmt) {
             fmt = TM_FMT_HOUR;
         } else if (time < (86400l * 7) * 1000) {
             fmt = TM_FMT_DAY;
-        } else if (time < ((86400l * 30) * 1000)) {
+        } else if (time < ((86400ll * 30) * 1000)) {
             fmt = TM_FMT_WEEK;
-        } else if (time < (86400l * 365) * 1000) {
+        } else if (time < (86400ll * 365) * 1000) {
             fmt = TM_FMT_MONTH;
         } else {
             fmt = TM_FMT_YEAR;
@@ -59,7 +59,7 @@ tm_fmt_item_t *tm_convert(char *dest, tm_t *src_ms, tm_fmt_t fmt) {
 
     char tmp[20];
 
-    sprintf(tmp, "%lu", val);
+    sprintf(tmp, "%llu", val);
     /*itoa(val,tmp,2);*/
     strcat(dest, tmp);
     strcat(dest, " ");

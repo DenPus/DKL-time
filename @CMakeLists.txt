@@ -1,24 +1,24 @@
 cmake_minimum_required(VERSION 2.8.9)
-project(dkl-time LANGUAGES C)
+project(@name LANGUAGES @language)
 
 set(CMAKE_C_STANDARD 11)
 
 file(GLOB src_ls "src/*.c")
-file(GLOB include_ls "include/*.h" "include/dkl-time/*.h")
+file(GLOB include_ls "include/*.h" "include/@name/*.h")
 
 install(DIRECTORY include DESTINATION include)
 
-add_library(dkl-time ${include_ls} ${src_ls})
+add_library(@name ${include_ls} ${src_ls})
 
-include_directories(header include include/dkl-time)
-link_libraries(dkl-time)
+include_directories(header include include/@name)
+link_libraries(@name)
 
 set_target_properties(
-        dkl-time PROPERTIES
+        @name PROPERTIES
         PUBLIC_HEADER "${incude_ls}"
 )
 
-install(TARGETS dkl-time
+install(TARGETS @name
         PUBLIC_HEADER DESTINATION include
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib

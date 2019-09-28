@@ -1,7 +1,7 @@
-dkl-time v0.1.2.1
+@name v@version
 ============================
 
-DKL time - library for working with time
+@description
 
 # Opportunities
 
@@ -11,9 +11,9 @@ DKL time - library for working with time
 
 # Info
 
-* Language code: C
+* Language code: @language
 * Author: DenKar
-* License: GPL-2.0
+* License: @license
 
 # Examples results
 

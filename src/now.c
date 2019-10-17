@@ -10,14 +10,15 @@
 
 /* static */
 
-static uint8_t tm_devices[7] = {
+static uint8_t tm_devices[8] = {
         CLOCK_REALTIME,
         CLOCK_MONOTONIC,
         CLOCK_PROCESS_CPUTIME_ID,
         CLOCK_THREAD_CPUTIME_ID,
-        /*CLOCK_BOOTTIME,
+        CLOCK_MONOTONIC_RAW,
         CLOCK_REALTIME_COARSE,
-        CLOCK_MONOTONIC_COARSE,*/
+        CLOCK_MONOTONIC_COARSE,
+        CLOCK_BOOTTIME,
         /*CLOCK_MONOTONIC_ACTIVE*/
 };
 

@@ -1,4 +1,4 @@
-dkl-time v0.1.2.1
+dkl-time v0.1.2.2
 ============================
 
 DKL time - library for working with time

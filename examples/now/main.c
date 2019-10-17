@@ -12,6 +12,11 @@ int main(void) {
     char time_str[40];
     char conv_str[50];
 
+    time = timenow(TM_DEV_PROCESS_CPUTIME_ID);
+    timestrf(time_str, time, NULL);
+    tm_convert_group(conv_str, time, 0, 0, 0);
+    printf("-- TM_DEV_PROCESS_CPUTIME_ID -> %lu\n   %s -> %s\n", time, time_str, conv_str);
+
     time = timenow(TM_DEV_REALTIME);
     timestrf(time_str, time, NULL);
     tm_convert_group(conv_str, time, 0, 8, 0);
@@ -36,11 +41,6 @@ int main(void) {
     timestrf(time_str, time, NULL);
     tm_convert_group(conv_str, time, 0, 0, 0);
     printf("-- TM_DEV_MONOTONIC_COARSE -> %lu\n   %s -> %s\n", time, time_str, conv_str);
-
-    time = timenow(TM_DEV_PROCESS_CPUTIME_ID);
-    timestrf(time_str, time, NULL);
-    tm_convert_group(conv_str, time, 0, 0, 0);
-    printf("-- TM_DEV_PROCESS_CPUTIME_ID -> %lu\n   %s -> %s\n", time, time_str, conv_str);
 
     time = timenow(TM_DEV_THREAD_CPUTIME_ID);
     timestrf(time_str, time, NULL);

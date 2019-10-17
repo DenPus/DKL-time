@@ -2,7 +2,7 @@
   "language": "C",
   "title": "DKL-time",
   "name": "dkl-time",
-  "version": "0.1.2.1",
+  "version": "0.1.2.2",
   "license": "GPL-2.0",
   "description": "DKL time - library for working with time",
   "homepage": "https://github.com/Denpus/DKL-time#README.md",

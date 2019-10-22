@@ -1,5 +1,20 @@
 file(GLOB example_ls "*")
 
+# Dependencies
+@for(dependencies)
+if (NOT TARGET @key)
+    if (EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/lib/@key/CMakeLists.txt")
+        add_subdirectory(lib/@key)
+        link_libraries(@key)
+        include_directories(lib/@key/include lib/@key/header)
+    else ()
+        include_directories(lib/@key/include lib/@key)
+    endif()
+endif ()
+@end
+include_directories(../include)
+link_libraries(@name)
+
 foreach (dir ${example_ls})
     if (IS_DIRECTORY ${dir})
         add_subdirectory(${dir})

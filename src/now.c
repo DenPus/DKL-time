@@ -1,16 +1,23 @@
 /*
- * 
- * Author:   denkar
- * Created:  28.08.19 15:14
+ * tmdev_ms.c
  *
- * Get current time from devices
+ * tmdev_ms()
+ * ==========
+ * Get milliseconds from device
+ *
+ * Author   :
+ * Created  :  28.08.19 15:14
+ *
+ * Copyright (C) Denis Karabadjak <denkar@mail.ru>
  */
 
-#include "main.h"
+#include "tmdev_ms.h"
+#include <time.h>
+#include <stdint.h>
 
-/* static */
+/* private */
 
-static uint8_t tm_devices[8] = {
+static uint8_t tmdev_ls[8] = {
         CLOCK_REALTIME,
         CLOCK_MONOTONIC,
         CLOCK_PROCESS_CPUTIME_ID,
@@ -24,19 +31,19 @@ static uint8_t tm_devices[8] = {
 
 /* public */
 
-tm_t timenow(tm_device_t dev) {
+dtmms_t dtmdev_ms(dtmdev_t dev) {
     struct timespec spec;
 
     if (dev > 6) {
         dev = 0;
     }
 
-    clock_gettime(tm_devices[dev], &spec);
+    clock_gettime(tmdev_ls[dev], &spec);
 
     // Convert nanoseconds to milliseconds
     float ms = (float) (spec.tv_nsec / 1.0e6);
 
-    tm_t dest = (tm_t) spec.tv_sec;
+    dtmms_t dest = (dtmms_t) spec.tv_sec;
     dest *= 1000;
     dest += (uint16_t) ms;
 

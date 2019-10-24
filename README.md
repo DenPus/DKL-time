@@ -1,9 +1,8 @@
-dkl-time v0.1.3.0
+dkl-time v0.1.4.0
 ============================
-
 DKL time - library for working with time
 
-# Opportunities
+# Features
 
 * Get time (milliseconds) now with multi devices
 * Convert time to string by format (strftime)

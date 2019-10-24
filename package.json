@@ -2,13 +2,16 @@
   "language": "C",
   "title": "DKL-time",
   "name": "dkl-time",
-  "version": "0.1.3.0",
+  "prefix": "dtm",
+  "version": "0.1.4.0",
   "license": "GPL-2.0",
   "description": "DKL time - library for working with time",
   "homepage": "https://github.com/Denpus/DKL-time#README.md",
   "dependencies": {
   },
   "keywords": [
-    "time"
+    "time",
+    "timepassed",
+    "timeconvert"
   ]
 }

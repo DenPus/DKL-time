@@ -1,9 +1,8 @@
 @name v@version
 ============================
-
 @description
 
-# Opportunities
+# Features
 
 * Get time (milliseconds) now with multi devices
 * Convert time to string by format (strftime)

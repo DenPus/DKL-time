@@ -1,14 +1,21 @@
 /*
+ * tmfmt.c
  *
- * Author:   denkar
- * Created:  28.08.19 14:30
+ * tmfmt
+ * ==========
+ * Time to string by format
  *
- * Get current time from devices
+ * Author   :
+ * Created  :  28.08.19 14:30
+ *
+ * Copyright (C) Denis Karabadjak <denkar@mail.ru>
  */
 
-#include <main.h>
+#include "tmfmt.h"
+#include <time.h>
+#include <string.h>
 
-void timestrf(char *dest, tm_t src, char *fmt) {
+void timestrf(char *dest, dtmms_t src, char *fmt) {
     time_t _src = src / 1000;
 /*    if (fmt) {
         char      strTime[200];

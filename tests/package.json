@@ -1,6 +1,6 @@
 {
   "child": true,
   "dependencies": {
-    "dtest": "github.com:Denpus/dtest"
+    "dtest": "github.com:Denpus/dtest#33aafdc"
   }
 }

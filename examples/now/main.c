@@ -12,40 +12,40 @@ int main(void) {
     char time_str[40];
     char conv_str[50];
 
-    time = timenow(TM_DEV_PROCESS_CPUTIME_ID);
+    time = dtmdev_ms(DTMDEV_PROCESS_CPUTIME_ID);
     timestrf(time_str, time, NULL);
-    tm_convert_group(conv_str, time, 0, 0, 0);
-    printf("-- TM_DEV_PROCESS_CPUTIME_ID -> %lu\n   %s -> %s\n", time, time_str, conv_str);
+    dtmconv_group(conv_str, time, 0, 0, 0);
+    printf("-- DTMDEV__PROCESS_CPUTIME_ID -> %lu\n   %s -> %s\n", time, time_str, conv_str);
 
-    time = timenow(TM_DEV_REALTIME);
+    time = dtmdev_ms(DTMDEV_REALTIME);
     timestrf(time_str, time, NULL);
-    tm_convert_group(conv_str, time, 0, 8, 0);
-    printf("-- TM_DEV_REALTIME -> %lu\n   %s -> %s\n", time, time_str, conv_str);
+    dtmconv_group(conv_str, time, 0, 8, 0);
+    printf("-- DTMDEV__REALTIME -> %lu\n   %s -> %s\n", time, time_str, conv_str);
 
-    time = timenow(TM_DEV_MONOTONIC);
+    time = dtmdev_ms(DTMDEV_MONOTONIC);
     timestrf(time_str, time, NULL);
-    tm_convert_group(conv_str, time, 0, 0, 1);
-    printf("-- TM_DEV_MONOTONIC -> %lu\n   %s -> %s\n", time, time_str, conv_str);
+    dtmconv_group(conv_str, time, 0, 0, 1);
+    printf("-- DTMDEV__MONOTONIC -> %lu\n   %s -> %s\n", time, time_str, conv_str);
 
-    time = timenow(TM_DEV_BOOTTIME);
+    time = dtmdev_ms(DTMDEV_BOOTTIME);
     timestrf(time_str, time, NULL);
-    tm_convert_group(conv_str, time, 0, 0, 0);
-    printf("-- TM_DEV_BOOTTIME -> %lu\n   %s -> %s\n", time, time_str, conv_str);
+    dtmconv_group(conv_str, time, 0, 0, 0);
+    printf("-- DTMDEV__BOOTTIME -> %lu\n   %s -> %s\n", time, time_str, conv_str);
 
-    time = timenow(TM_DEV_REALTIME_COARSE);
+    time = dtmdev_ms(DTMDEV_REALTIME_COARSE);
     timestrf(time_str, time, NULL);
-    tm_convert_group(conv_str, time, 0, 0, 0);
-    printf("-- TM_DEV_REALTIME_COARSE -> %lu\n   %s -> %s\n", time, time_str, conv_str);
+    dtmconv_group(conv_str, time, 0, 0, 0);
+    printf("-- DTMDEV__REALTIME_COARSE -> %lu\n   %s -> %s\n", time, time_str, conv_str);
 
-    time = timenow(TM_DEV_MONOTONIC_COARSE);
+    time = dtmdev_ms(DTMDEV_MONOTONIC_COARSE);
     timestrf(time_str, time, NULL);
-    tm_convert_group(conv_str, time, 0, 0, 0);
-    printf("-- TM_DEV_MONOTONIC_COARSE -> %lu\n   %s -> %s\n", time, time_str, conv_str);
+    dtmconv_group(conv_str, time, 0, 0, 0);
+    printf("-- DTMDEV__MONOTONIC_COARSE -> %lu\n   %s -> %s\n", time, time_str, conv_str);
 
-    time = timenow(TM_DEV_THREAD_CPUTIME_ID);
+    time = dtmdev_ms(DTMDEV_THREAD_CPUTIME_ID);
     timestrf(time_str, time, NULL);
-    tm_convert_group(conv_str, time, 0, 0, 0);
-    printf("-- TM_DEV_THREAD_CPUTIME_ID -> %lu\n   %s -> %s\n", time, time_str, conv_str);
+    dtmconv_group(conv_str, time, 0, 0, 0);
+    printf("-- DTMDEV__THREAD_CPUTIME_ID -> %lu\n   %s -> %s\n", time, time_str, conv_str);
 
     return 0;
 }

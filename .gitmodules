@@ -1,1 +1,6 @@
 # Dependencies list
+
+[submodule "lib/dtest"]
+	path = lib/dtest
+	url = git:Denpus/dtest.git
+	branch = dev

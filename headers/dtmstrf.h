@@ -1,8 +1,8 @@
 /*
- * tmfmt.h
+ * tmstrf.h
  *
- * tmfmt
- * ==========
+ * tmstrf()
+ * ========
  * Time to string by format
  *
  * Author   :  
@@ -15,4 +15,4 @@
 
 #include "dtmms_t.h"
 
-extern void timestrf(char *dest, dtmms_t src, char *fmt);
+extern void dtmstrf(char *dest, dtmms_t src, char *fmt);

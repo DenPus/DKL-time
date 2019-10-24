@@ -2,7 +2,7 @@
  * @name\.h
  *
  * Headers @name
- * =============
+ * ================
  * @description
  *
  * Author   :   denkar

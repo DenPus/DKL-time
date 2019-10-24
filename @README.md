@@ -8,6 +8,15 @@
 * Convert time to string by format (strftime)
 * Convert time with format passed time
 
+# Api
+
+## Functions
+@for(functions)
+### @key
+```C
+@.
+```@end
+
 # Info
 
 * Language code: @language

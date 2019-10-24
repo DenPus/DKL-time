@@ -3,11 +3,20 @@
   "title": "DKL-time",
   "name": "dkl-time",
   "prefix": "dtm",
-  "version": "0.1.5.0",
+  "version": "0.1.5.1",
   "license": "GPL-2.0",
   "description": "DKL time - library for working with time",
   "homepage": "https://github.com/Denpus/DKL-time#README.md",
   "dependencies": {
+  },
+  "functions": {
+    "dtmdev_m": "dtmms_t dtmdev_ms(dtmdev_t dev)",
+    "dtmconv": "dtmfmt_item_t *dtmconv(char *dest, dtmms_t *src_ms, dtmfmt_t fmt)",
+    "dtmfmt_i": "dtmfmt_item_t *dtmfmt_item(dtmms_t time, dtmfmt_t fmt)",
+    "dtmconv_": "char *dtmconv_group(char *dest, dtmms_t src_ms, dtmfmt_t fmt, uint8_t groups, _Bool is_empty)",
+    "dtmstrf": "void dtmstrf(char *dest, dtmms_t src, char *fmt)",
+    "dtmstr": "dtmstr(char *dest, time_t sec)",
+    "dtmstr_m": "int dtmstr_ms(char *dest, dtmms_t ms)"
   },
   "keywords": [
     "time",

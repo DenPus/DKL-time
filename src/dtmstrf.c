@@ -11,11 +11,11 @@
  * Copyright (C) Denis Karabadjak <denkar@mail.ru>
  */
 
-#include "tmfmt.h"
+#include "dtmstrf.h"
 #include <time.h>
 #include <string.h>
 
-void timestrf(char *dest, dtmms_t src, char *fmt) {
+void dtmstrf(char *dest, dtmms_t src, char *fmt) {
     time_t _src = src / 1000;
 /*    if (fmt) {
         char      strTime[200];

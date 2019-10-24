@@ -1,4 +1,4 @@
-dkl-time v0.1.5.0
+dkl-time v0.1.5.1
 ============================
 DKL time - library for working with time
 
@@ -7,6 +7,39 @@ DKL time - library for working with time
 * Get time (milliseconds) now with multi devices
 * Convert time to string by format (strftime)
 * Convert time with format passed time
+
+# Api
+
+## Functions
+
+### dtmdev_m
+```C
+dtmms_t dtmdev_ms(dtmdev_t dev)
+```
+### dtmconv
+```C
+dtmfmt_item_t *dtmconv(char *dest, dtmms_t *src_ms, dtmfmt_t fmt)
+```
+### dtmfmt_i
+```C
+dtmfmt_item_t *dtmfmt_item(dtmms_t time, dtmfmt_t fmt)
+```
+### dtmconv_
+```C
+char *dtmconv_group(char *dest, dtmms_t src_ms, dtmfmt_t fmt, uint8_t groups, _Bool is_empty)
+```
+### dtmstrf
+```C
+void dtmstrf(char *dest, dtmms_t src, char *fmt)
+```
+### dtmstr
+```C
+dtmstr(char *dest, time_t sec)
+```
+### dtmstr_m
+```C
+int dtmstr_ms(char *dest, dtmms_t ms)
+```
 
 # Info
 

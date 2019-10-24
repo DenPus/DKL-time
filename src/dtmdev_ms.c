@@ -11,7 +11,7 @@
  * Copyright (C) Denis Karabadjak <denkar@mail.ru>
  */
 
-#include "tmdev_ms.h"
+#include "dtmdev_ms.h"
 #include <time.h>
 #include <stdint.h>
 

@@ -13,6 +13,6 @@
 
 #pragma once
 
-#include "tm_t.h"
+#include "dtmms_t.h"
 
 extern void timestrf(char *dest, dtmms_t src, char *fmt);

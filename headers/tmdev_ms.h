@@ -13,7 +13,7 @@
 
 #pragma once
 
-#include "tm_t.h"
+#include "dtmms_t.h"
 
 typedef enum tmdev_e {
     DTMDEV_REALTIME,

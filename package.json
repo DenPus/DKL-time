@@ -3,7 +3,7 @@
   "title": "DKL-time",
   "name": "dkl-time",
   "prefix": "dtm",
-  "version": "0.1.4.0",
+  "version": "0.1.5.0",
   "license": "GPL-2.0",
   "description": "DKL time - library for working with time",
   "homepage": "https://github.com/Denpus/DKL-time#README.md",

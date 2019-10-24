@@ -16,8 +16,10 @@
 
 #pragma once
 
-@include("../headers/tm_t.h")
-@include("../headers/tmdev.h")
-@include("../headers/tmconv.h")
-@include("../headers/tmfmt.h")
+@include("../headers/dtmms_t.h")
+@include("../headers/dtmdev_ms.h")
+@include("../headers/dtmconv.h")
+@include("../headers/dtmstr.h")
+@include("../headers/dtmstr_ms.h")
+@include("../headers/dtmstrf.h")
 

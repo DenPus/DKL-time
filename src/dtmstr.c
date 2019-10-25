@@ -20,7 +20,7 @@ int dtmstr(char *dst, time_t sec) {
     char   *_dst;
 
 #if _WIN64
-    /*errno_t e = */ctime_s(dest, 100, &_src);
+    /*errno_t e = */ctime_s(dst, 100, &_src);
 #else
     _dst = ctime_r(&sec, dst);
 #endif

@@ -9,7 +9,7 @@
  * Created  :   24.10.19 09:39 (base 28.08.19 15:04)
  * Homepage :   https://github.com/Denpus/DKL-time#README.md
  * License  :   GPL-2.0
- * Version  :   0.1.5.4
+ * Version  :   0.1.5.5
  *
  * Copyright (C) Denis Karabadjak <denkar>
  */
@@ -53,19 +53,19 @@ typedef struct tm_fmt_item_s {
     dtmms_t val;
 } dtmfmt_item_t;
 
-extern dtmfmt_item_t *dtmconv(char *dest, dtmms_t *src_ms, dtmfmt_t fmt);
+extern dtmfmt_item_t *dtmconv(char *dst, dtmms_t *src_ms, dtmfmt_t fmt);
 
 extern dtmfmt_item_t *dtmfmt_item(dtmms_t time, dtmfmt_t fmt);
 
 extern char *
-dtmconv_group(char *dest, dtmms_t src_ms, dtmfmt_t fmt, uint8_t groups,
+dtmconv_group(char *dst, dtmms_t src_ms, dtmfmt_t fmt, uint8_t groups,
               _Bool is_empty);
 
-extern void dtmstrf(char *dest, dtmms_t src, char *fmt);
+extern void dtmstrf(char *dst, dtmms_t src, char *fmt);
 
 #include <time.h>
 
-extern int dtmstr(char *dest, time_t sec);
+extern int dtmstr(char *dst, time_t sec);
 
 extern int dtmstr_ms(char *dst, dtmms_t ms);
 

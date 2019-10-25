@@ -15,4 +15,4 @@
 
 #include "dtmms_t.h"
 
-extern void dtmstrf(char *dest, dtmms_t src, char *fmt);
+extern void dtmstrf(char *dst, dtmms_t src, char *fmt);

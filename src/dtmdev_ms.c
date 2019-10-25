@@ -43,9 +43,9 @@ dtmms_t dtmdev_ms(dtmdev_t dev) {
     // Convert nanoseconds to milliseconds
     float ms = (float) (spec.tv_nsec / 1.0e6);
 
-    dtmms_t dest = (dtmms_t) spec.tv_sec;
-    dest *= 1000;
-    dest += (uint16_t) ms;
+    dtmms_t dst = (dtmms_t) spec.tv_sec;
+    dst *= 1000;
+    dst += (uint16_t) ms;
 
-    return dest;
+    return dst;
 }

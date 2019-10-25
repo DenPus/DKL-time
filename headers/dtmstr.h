@@ -16,4 +16,4 @@
 #include "dtmms_t.h"
 #include <time.h>
 
-extern int dtmstr(char *dest, time_t sec);
+extern int dtmstr(char *dst, time_t sec);

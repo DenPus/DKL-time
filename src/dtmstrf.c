@@ -15,7 +15,7 @@
 #include <time.h>
 #include <string.h>
 
-void dtmstrf(char *dest, dtmms_t src, char *fmt) {
+void dtmstrf(char *dst, dtmms_t src, char *fmt) {
     time_t _src = src / 1000;
 /*    if (fmt) {
         char      strTime[200];
@@ -29,17 +29,17 @@ void dtmstrf(char *dest, dtmms_t src, char *fmt) {
     } else {*/
 
     if (fmt) {
-        strftime(dest, 100, fmt, gmtime(&_src));
+        strftime(dst, 100, fmt, gmtime(&_src));
     } else {
 #if _WIN64
-        /*errno_t e = */ctime_s(dest, 100, &_src);
+        /*errno_t e = */ctime_s(dst, 100, &_src);
 #else
-        /*dest = */ctime_r(&_src, dest);
+        /*dst = */ctime_r(&_src, dst);
 #endif
-        size_t len = strlen(dest);
+        size_t len = strlen(dst);
 
         if (len) {
-            dest[len - 1] = '\0';
+            dst[len - 1] = '\0';
         }
     }
 }

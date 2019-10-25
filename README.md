@@ -1,4 +1,4 @@
-dkl-time v0.1.5.3
+dkl-time v0.1.5.4
 ============================
 DKL time - library for working with time
 
@@ -12,7 +12,7 @@ DKL time - library for working with time
 
 ## Functions
 
-### dtmdev_m
+### dtmdev_ms
 ```C
 dtmms_t dtmdev_ms(dtmdev_t dev)
 ```
@@ -20,11 +20,11 @@ dtmms_t dtmdev_ms(dtmdev_t dev)
 ```C
 dtmfmt_item_t *dtmconv(char *dest, dtmms_t *src_ms, dtmfmt_t fmt)
 ```
-### dtmfmt_i
+### dtmfmt_item
 ```C
 dtmfmt_item_t *dtmfmt_item(dtmms_t time, dtmfmt_t fmt)
 ```
-### dtmconv_
+### dtmconv_group
 ```C
 char *dtmconv_group(char *dest, dtmms_t src_ms, dtmfmt_t fmt, uint8_t groups, _Bool is_empty)
 ```
@@ -36,7 +36,7 @@ void dtmstrf(char *dest, dtmms_t src, char *fmt)
 ```C
 dtmstr(char *dest, time_t sec)
 ```
-### dtmstr_m
+### dtmstr_ms
 ```C
 int dtmstr_ms(char *dest, dtmms_t ms)
 ```

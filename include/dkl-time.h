@@ -9,7 +9,7 @@
  * Created  :   24.10.19 09:39 (base 28.08.19 15:04)
  * Homepage :   https://github.com/Denpus/DKL-time#README.md
  * License  :   GPL-2.0
- * Version  :   0.1.5.3
+ * Version  :   0.1.5.4
  *
  * Copyright (C) Denis Karabadjak <denkar>
  */

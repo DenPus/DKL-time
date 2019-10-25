@@ -13,4 +13,4 @@
 
 #pragma once
 
-int dtmstr_ms(char *dst, dtmms_t ms);
+extern int dtmstr_ms(char *dst, dtmms_t ms);

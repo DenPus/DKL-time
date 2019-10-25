@@ -1,10 +1,6 @@
 # Dependencies list
 @for(dependencies)[submodule "lib/@key"]
 	path = lib/@key
-	url = git\@@.\.git
+	url = git\@@strrchr(. "#")\.git
 	branch = dev
 @end
-[submodule "lib/dtest"]
-	path = lib/dtest
-	url = git@github.com:Denpus/dtest.git
-	branch = dev

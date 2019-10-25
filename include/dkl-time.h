@@ -9,7 +9,7 @@
  * Created  :   24.10.19 09:39 (base 28.08.19 15:04)
  * Homepage :   https://github.com/Denpus/DKL-time#README.md
  * License  :   GPL-2.0
- * Version  :   0.1.5.1
+ * Version  :   0.1.5.3
  *
  * Copyright (C) Denis Karabadjak <denkar>
  */
@@ -30,7 +30,7 @@ typedef enum tmdev_e {
     DTMDEV_MONOTONIC_COARSE,
     DTMDEV_BOOTTIME,
     DTMDEV_MONOTONIC_ACTIVE,
-}                dtmdev_t;
+} dtmdev_t;
 
 extern dtmms_t dtmdev_ms(dtmdev_t dev);
 
@@ -45,13 +45,13 @@ typedef enum dtmfmt_e {
     DTM_FMT_WEEK,
     DTM_FMT_MONTH,
     DTM_FMT_YEAR
-}                dtmfmt_t;
+} dtmfmt_t;
 
 typedef struct tm_fmt_item_s {
     uint8_t id;
     char    name[5];
     dtmms_t val;
-}                dtmfmt_item_t;
+} dtmfmt_item_t;
 
 extern dtmfmt_item_t *dtmconv(char *dest, dtmms_t *src_ms, dtmfmt_t fmt);
 
@@ -67,7 +67,8 @@ extern void dtmstrf(char *dest, dtmms_t src, char *fmt);
 
 extern int dtmstr(char *dest, time_t sec);
 
-extern int dtmstr_ms(char *dest, dtmms_t ms);
+extern int dtmstr_ms(char *dst, dtmms_t ms);
+
 
 // @deprecated
 

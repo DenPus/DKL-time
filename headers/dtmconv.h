@@ -30,12 +30,13 @@ typedef enum dtmfmt_e {
 typedef struct tm_fmt_item_s {
     uint8_t id;
     char    name[5];
-    dtmms_t    val;
+    dtmms_t val;
 } dtmfmt_item_t;
 
 extern dtmfmt_item_t *dtmconv(char *dest, dtmms_t *src_ms, dtmfmt_t fmt);
 
 extern dtmfmt_item_t *dtmfmt_item(dtmms_t time, dtmfmt_t fmt);
 
-extern char *dtmconv_group(char *dest, dtmms_t src_ms, dtmfmt_t fmt, uint8_t groups,
-                       _Bool is_empty);
+extern char *
+dtmconv_group(char *dest, dtmms_t src_ms, dtmfmt_t fmt, uint8_t groups,
+              _Bool is_empty);

@@ -44,7 +44,7 @@ int dtmstr_ms(char *dst, dtmms_t ms)
 # Info
 
 * Language code: C
-* Author: DenKar
+* Author: Denis Karabadjak (DenKar)
 * License: GPL-2.0
 
 # Examples results

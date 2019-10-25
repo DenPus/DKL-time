@@ -20,7 +20,7 @@
 # Info
 
 * Language code: @language
-* Author: DenKar
+* Author: Denis Karabadjak (DenKar)
 * License: @license
 
 # Examples results

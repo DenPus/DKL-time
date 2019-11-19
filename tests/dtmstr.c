@@ -1,7 +1,7 @@
 /*
- * dtmstr.c
+ * dtm_strsec.c
  *
- * Test dtmstr
+ * Test dtm_strsec
  * ================
  *
  * Author   :  

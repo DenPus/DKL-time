@@ -52,8 +52,8 @@ dtmfmt_item_t *dtmfmt_item(dtmms_t time, dtmfmt_t fmt) {
     return item;
 }
 
-dtmfmt_item_t *dtmconv(char *dest, dtmms_t *src_ms, dtmfmt_t fmt) {
-    *dest                      = 0;
+dtmfmt_item_t *dtmconv(char *dst, dtmms_t *src_ms, dtmfmt_t fmt) {
+    *dst                      = 0;
     dtmfmt_item_t *tm_fmt_item = dtmfmt_item(*src_ms, fmt);
     dtmms_t       val;
 
@@ -68,17 +68,17 @@ dtmfmt_item_t *dtmconv(char *dest, dtmms_t *src_ms, dtmfmt_t fmt) {
 
     sprintf(tmp, "%lu", val);
     /*itoa(val,tmp,2);*/
-    strcat(dest, tmp);
-    strcat(dest, " ");
+    strcat(dst, tmp);
+    strcat(dst, " ");
 
-    strcat(dest, tm_fmt_item->name);
+    strcat(dst, tm_fmt_item->name);
 
     return tm_fmt_item;
 }
 
-char *dtmconv_group(char *dest, dtmms_t src_ms, dtmfmt_t fmt, uint8_t groups,
+char *dtmconv_group(char *dst, dtmms_t src_ms, dtmfmt_t fmt, uint8_t groups,
                        _Bool is_empty) {
-    *dest = 0;
+    *dst = 0;
 
     if (groups == 0) {
         groups = 1;
@@ -89,10 +89,10 @@ char *dtmconv_group(char *dest, dtmms_t src_ms, dtmfmt_t fmt, uint8_t groups,
         dtmfmt_item_t *tm_fmt_item = dtmconv(_dest, &src_ms, fmt);
 
         if (i) {
-            strcat(dest, " ");
+            strcat(dst, " ");
         }
 
-        strcat(dest, _dest);
+        strcat(dst, _dest);
 
         /* fmt = tm_fmt_item->id + 1; fixme */
 
@@ -101,5 +101,5 @@ char *dtmconv_group(char *dest, dtmms_t src_ms, dtmfmt_t fmt, uint8_t groups,
         }
     }
 
-    return dest;
+    return dst;
 }

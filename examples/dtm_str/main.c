@@ -1,8 +1,8 @@
 /*
  * main.c
  *
- * Example dtmstr()
- * ===============
+ * Example dtm_strsec()
+ * =================
  *
  * Author   :  
  * Created  :  Thu Oct 24 11:27:53 2019
@@ -15,12 +15,12 @@
 
 int main(void) {
     int err = 0;
-    int len;
+    int ndst;
     char dst[30];
 
-    len = dtmstr(dst, 3600);
+    ndst = dtm_strsec(dst, 3600);
 
-    printf("%.*s", len, dst);
+    printf("%.*s\n", ndst, dst);
 
     return err;
 }

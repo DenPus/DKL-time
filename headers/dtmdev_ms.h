@@ -14,6 +14,7 @@
 #pragma once
 
 #include "dtmms_t.h"
+#include <time.h>
 
 typedef enum tmdev_e {
     DTMDEV_REALTIME,
@@ -27,4 +28,10 @@ typedef enum tmdev_e {
     DTMDEV_MONOTONIC_ACTIVE,
 } dtmdev_t;
 
-extern dtmms_t dtmdev_ms(dtmdev_t dev);
+extern time_t dtm_secdev(dtmdev_t src);
+
+extern dtmms_t dtm_msdev(dtmdev_t src);
+
+#define dtm_strdev(dst, dev) dtm_strsec(dst, dtm_secdev(dev))
+
+#define dtm_strfdev(dst, dev, nfmt, fmt) dtm_strfsec(dst, dtm_secdev(dev), nfmt, fmt)

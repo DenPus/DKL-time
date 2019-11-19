@@ -1,7 +1,7 @@
 /*
- * dtmstr.h
+ * dtm_strsec.h
  *
- * dtmstr
+ * dtm_strsec
  * ==========
  * Get string default format from seconds
  *
@@ -16,4 +16,6 @@
 #include "dtmms_t.h"
 #include <time.h>
 
-extern int dtmstr(char *dest, time_t sec);
+extern int dtm_strsec(char *dst, time_t src);
+
+#define dtm_strms(dst, src) dtm_strsec(dst, src / 1000)

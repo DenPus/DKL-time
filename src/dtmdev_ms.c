@@ -17,7 +17,7 @@
 
 /* private */
 
-static uint8_t tmdev_ls[8] = {
+static uint8_t dtm_devices[8] = {
         CLOCK_REALTIME,
         CLOCK_MONOTONIC,
         CLOCK_PROCESS_CPUTIME_ID,
@@ -31,21 +31,28 @@ static uint8_t tmdev_ls[8] = {
 
 /* public */
 
-dtmms_t dtmdev_ms(dtmdev_t dev) {
+time_t dtm_secdev(dtmdev_t src) {
+    int             err;
     struct timespec spec;
 
-    if (dev > 6) {
-        dev = 0;
-    }
+    err = clock_gettime(dtm_devices[src], &spec);
 
-    clock_gettime(tmdev_ls[dev], &spec);
+    time_t dst = (time_t) spec.tv_sec;
+
+    return dst;
+}
+
+dtmms_t dtm_msdev(dtmdev_t src) {
+    struct timespec spec;
+
+    clock_gettime(dtm_devices[src], &spec);
 
     // Convert nanoseconds to milliseconds
     float ms = (float) (spec.tv_nsec / 1.0e6);
 
-    dtmms_t dest = (dtmms_t) spec.tv_sec;
-    dest *= 1000;
-    dest += (uint16_t) ms;
+    dtmms_t dst = (dtmms_t) spec.tv_sec;
+    dst *= 1000;
+    dst += (uint16_t) ms;
 
-    return dest;
+    return dst;
 }

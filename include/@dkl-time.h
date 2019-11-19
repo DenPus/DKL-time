@@ -17,11 +17,10 @@
 #pragma once
 
 @include("../headers/dtmms_t.h" "#include <")
-@include("../headers/dtmdev_ms.h" "typedef enum")
+@include("../headers/dtmdev_ms.h" "#include <")
 @include("../headers/dtmconv.h" "#include <")
-@include("../headers/dtmstrf.h" "extern ")
+@include("../headers/dtmstrf.h" "#include <")
 @include("../headers/dtmstr.h" "#include <")
-@include("../headers/dtmstr_ms.h" "extern ")
 
 // \@deprecated
 
@@ -30,8 +29,8 @@ typedef dtmms_t tm_t;
 #define tm_convert dtmconv
 #define tm_convert_group dtmconv_group
 #define tm_get_fmt_item dtmfmt_item
-#define timenow dtmdev_ms
-#define timestrf dtmstrf
+#define timenow dtm_msdev
+#define timestrf dtm_strfsec
 
 #define TM_DEV_REALTIME             DTMDEV_REALTIME
 #define TM_DEV_MONOTONIC            DTMDEV_MONOTONIC

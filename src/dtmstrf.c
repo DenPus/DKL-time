@@ -12,34 +12,16 @@
  */
 
 #include "dtmstrf.h"
-#include <time.h>
-#include <string.h>
+#include <memory.h>
 
-void dtmstrf(char *dest, dtmms_t src, char *fmt) {
-    time_t _src = src / 1000;
-/*    if (fmt) {
-        char      strTime[200];
-        struct tm *u;
+int dtm_strfsec(char *dst, time_t src, int nfmt, char *fmt) {
+    int       ndst;
+    char      fmt_buf[nfmt + 1];
+    struct tm *utm = gmtime(&src);
 
-        u = localtime(&timer);
-        
-        strftime(strTime, 200, fmt->val, u);
+    memcpy(fmt_buf, fmt, (size_t) nfmt);
 
-        fmtStr = strTime;
-    } else {*/
+    ndst = (int) strftime(dst, 100, fmt_buf, utm);
 
-    if (fmt) {
-        strftime(dest, 100, fmt, gmtime(&_src));
-    } else {
-#if _WIN64
-        /*errno_t e = */ctime_s(dest, 100, &_src);
-#else
-        /*dest = */ctime_r(&_src, dest);
-#endif
-        size_t len = strlen(dest);
-
-        if (len) {
-            dest[len - 1] = '\0';
-        }
-    }
+    return ndst;
 }

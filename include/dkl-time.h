@@ -9,7 +9,7 @@
  * Created  :   24.10.19 09:39 (base 28.08.19 15:04)
  * Homepage :   https://github.com/Denpus/DKL-time#README.md
  * License  :   GPL-2.0
- * Version  :   0.1.5.4
+ * Version  :   0.9.6.0
  *
  * Copyright (C) Denis Karabadjak <denkar>
  */
@@ -19,6 +19,8 @@
 #include <stdint.h>
 
 typedef uint64_t dtmms_t;
+
+#include <time.h>
 
 typedef enum tmdev_e {
     DTMDEV_REALTIME,
@@ -32,7 +34,13 @@ typedef enum tmdev_e {
     DTMDEV_MONOTONIC_ACTIVE,
 } dtmdev_t;
 
-extern dtmms_t dtmdev_ms(dtmdev_t dev);
+extern time_t dtm_secdev(dtmdev_t src);
+
+extern dtmms_t dtm_msdev(dtmdev_t src);
+
+#define dtm_strdev(dst, dev) dtm_strsec(dst, dtm_secdev(dev))
+
+#define dtm_strfdev(dst, dev, nfmt, fmt) dtm_strfsec(dst, dtm_secdev(dev), nfmt, fmt)
 
 #include <stdint.h>
 
@@ -53,21 +61,25 @@ typedef struct tm_fmt_item_s {
     dtmms_t val;
 } dtmfmt_item_t;
 
-extern dtmfmt_item_t *dtmconv(char *dest, dtmms_t *src_ms, dtmfmt_t fmt);
+extern dtmfmt_item_t *dtmconv(char *dst, dtmms_t *src_ms, dtmfmt_t fmt);
 
 extern dtmfmt_item_t *dtmfmt_item(dtmms_t time, dtmfmt_t fmt);
 
 extern char *
-dtmconv_group(char *dest, dtmms_t src_ms, dtmfmt_t fmt, uint8_t groups,
+dtmconv_group(char *dst, dtmms_t src_ms, dtmfmt_t fmt, uint8_t groups,
               _Bool is_empty);
-
-extern void dtmstrf(char *dest, dtmms_t src, char *fmt);
 
 #include <time.h>
 
-extern int dtmstr(char *dest, time_t sec);
+extern int dtm_strfsec(char *dst, time_t src, int nfmt, char *fmt);
 
-extern int dtmstr_ms(char *dst, dtmms_t ms);
+#define dtm_strfms(dst, src, nfmt, fmt) dtm_strfsec(dst, src / 1000, nfmt, fmt)
+
+#include <time.h>
+
+extern int dtm_strsec(char *dst, time_t src);
+
+#define dtm_strms(dst, src) dtm_strsec(dst, src / 1000)
 
 
 // @deprecated
@@ -77,8 +89,8 @@ typedef dtmms_t tm_t;
 #define tm_convert dtmconv
 #define tm_convert_group dtmconv_group
 #define tm_get_fmt_item dtmfmt_item
-#define timenow dtmdev_ms
-#define timestrf dtmstrf
+#define timenow dtm_msdev
+#define timestrf dtm_strfsec
 
 #define TM_DEV_REALTIME             DTMDEV_REALTIME
 #define TM_DEV_MONOTONIC            DTMDEV_MONOTONIC

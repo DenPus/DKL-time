@@ -1,8 +1,8 @@
 /*
- * dtmstr.c
+ * dtm_strsec.c
  *
- * dtmstr()
- * ==========
+ * dtm_strsec()
+ * =========
  * Get string default format from seconds
  *
  * Author   :  
@@ -15,21 +15,21 @@
 #include <time.h>
 #include <string.h>
 
-int dtmstr(char *dst, time_t sec) {
+int dtm_strsec(char *dst, time_t src) {
     int    len  = -1;
     char   *_dst;
 
 #if _WIN64
-    /*errno_t e = */ctime_s(dest, 100, &_src);
+    /*errno_t e = */ctime_s(dst, 100, &_src);
 #else
-    _dst = ctime_r(&sec, dst);
+    _dst = ctime_r(&src, dst);
 #endif
 
-    if (_dst) {
+    if (!_dst) {
         return len;
     }
 
-    len = (int) strlen(dst);
+    len = (int) strlen(dst) - 1;
 
     return len;
 }

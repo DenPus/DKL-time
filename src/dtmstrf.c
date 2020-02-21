@@ -13,11 +13,12 @@
 
 #include "dtmstrf.h"
 #include <memory.h>
+#include <locale.h>
 
 int dtm_strfsec(char *dst, time_t src, int nfmt, char *fmt) {
     int       ndst;
     char      fmt_buf[nfmt + 1];
-    struct tm *utm = gmtime(&src);
+    struct tm *utm = localtime(&src);
 
     memcpy(fmt_buf, fmt, (size_t) nfmt);
 

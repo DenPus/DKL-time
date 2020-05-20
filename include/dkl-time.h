@@ -61,6 +61,17 @@ typedef struct tm_fmt_item_s {
     dtmms_t val;
 } dtmfmt_item_t;
 
+typedef struct {
+    char   sec;
+    char   min;
+    char   hour;
+    char   mday;
+    char   month;
+    short  year;
+    char   wday;
+    char   yday;
+} dtm_obj_t;
+
 extern dtmfmt_item_t *dtmconv(char *dst, dtmms_t *src_ms, dtmfmt_t fmt);
 
 extern dtmfmt_item_t *dtmfmt_item(dtmms_t time, dtmfmt_t fmt);
@@ -81,6 +92,21 @@ extern int dtm_strsec(char *dst, time_t src);
 
 #define dtm_strms(dst, src) dtm_strsec(dst, src / 1000)
 
+extern int dtm_obj(long time, dtm_obj_t *obj);
+
+typedef struct {
+    short id;
+    char  wday, _wday;
+    _Bool lear:1;
+} dtm_year_t;
+
+extern int dtm_year(dtm_year_t *year);
+
+typedef struct {
+    char id, len, wday;
+} dtm_moth_t;
+
+extern int dtm_month(dtm_year_t *year, dtm_moth_t *month);
 
 // @deprecated
 

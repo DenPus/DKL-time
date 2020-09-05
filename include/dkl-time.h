@@ -135,3 +135,7 @@ typedef dtmms_t tm_t;
 #define TM_FMT_WEEK                 DTM_FMT_WEEK
 #define TM_FMT_MONTH                DTM_FMT_MONTH
 #define TM_FMT_YEA                  DTM_FMT_YEA
+
+#include <time.h>
+
+extern time_t dtm_struct(struct tm* src);

@@ -9,7 +9,7 @@
  * Created  :   24.10.19 09:39 (base 28.08.19 15:04)
  * Homepage :   https://github.com/Denpus/DKL-time#README.md
  * License  :   GPL-2.0
- * Version  :   0.9.6.1
+ * Version  :   0.9.9
  *
  * Copyright (C) Denis Karabadjak <denkar>
  */
@@ -18,7 +18,24 @@
 
 #include <stdint.h>
 
-typedef uint64_t dtmms_t;
+typedef uint32_t dtm_t;     /* seconds */
+typedef uint64_t dtmms_t;   /* milliseconds */
+typedef uint64_t dtm_us_t;  /* microseconds */
+typedef uint64_t dtm_ns_t;  /* nanoseconds */
+
+typedef struct dtmo_s {
+    uint8_t  month,
+             mday,
+             wday,
+             hour,
+             min,
+             sec;
+    uint16_t year,
+             yday,
+             msec,
+             usec,
+             nsec;
+} dtmo_t;
 
 #include <time.h>
 
@@ -61,17 +78,6 @@ typedef struct tm_fmt_item_s {
     dtmms_t val;
 } dtmfmt_item_t;
 
-typedef struct {
-    char   sec;
-    char   min;
-    char   hour;
-    char   mday;
-    char   month;
-    short  year;
-    char   wday;
-    char   yday;
-} dtm_obj_t;
-
 extern dtmfmt_item_t *dtmconv(char *dst, dtmms_t *src_ms, dtmfmt_t fmt);
 
 extern dtmfmt_item_t *dtmfmt_item(dtmms_t time, dtmfmt_t fmt);
@@ -92,7 +98,61 @@ extern int dtm_strsec(char *dst, time_t src);
 
 #define dtm_strms(dst, src) dtm_strsec(dst, src / 1000)
 
-extern int dtm_obj(long time, dtm_obj_t *obj);
+/* */
+
+extern int dtm_obj(long time, dtmo_t *obj);
+
+/* object convert to int */
+
+extern dtm_t dtmo_tos(dtmo_t *src);
+
+#define dtmo_toms(src)                                                         \
+    ((dtmms_t )(dtmo_tos(src) * 1000ul) + (src)->msec)
+
+#define dtmo_tous(src)                                                         \
+    ((dtmms_t )(dtmo_tos(src) * 1000ul) + (src)->usec)
+
+#define dtmo_tons(src)                                                         \
+    ((dtmms_t )(dtmo_tos(src) * 1000ul) + (src)->nsec)
+
+/* init struct */
+
+#define dtmo(_yday, _nonth, _mday, _wday, _hour, _min, _s, _ms, _us, _ns)      \
+    ((dtmo_t ){                                                                \
+        .yday  = _yday,                                                        \
+        .mday  = _mday,                                                        \
+        .month = _nonth,                                                       \
+        .wday  = _wday,                                                        \
+        .hour  = _hour,                                                        \
+        .min   = _min,                                                         \
+        .sec   = _s,                                                           \
+        .msec  = _ms,                                                          \
+        .usec  = _us,                                                          \
+        .nsec  = _ns,                                                          \
+    })
+
+#define dtmo_year(yday, month, mday, wday, hour, min, sec, ms, us, ns)         \
+    dtmo(yday, month, mday, wday, hour, min, sec, ms, us, ns)
+
+#define dtmo_month(mday, wday, hour, min, sec, ms, us, ns)                     \
+    dtmo(0, 0, mday, wday, hour, min, sec, ms, us, ns)
+
+#define dtmo_week(wday, hour, min, sec, ms, us, ns)                            \
+    dtmo_month(0, wday, hour, min, sec, ms, us, ns)
+
+#define dtmo_day(hour, min, sec, ms, us, ns)                                   \
+    dtmo_week(0, hour, min, sec, ms, us, ns)
+
+#define dtmo_hour(min, sec, ms, us, ns)                                        \
+    dtmo_day(0, min, sec, ms, us, ns)
+
+#define dtmo_min(sec, ms, us, ns)                                              \
+    dtmo_hour(0, sec, ms, us, ns)
+
+#define dtmo_sec(ms, us, ns)                                                   \
+    dtmo_min(0, ms, us, ns)
+
+/* */
 
 typedef struct {
     short id;
@@ -135,7 +195,3 @@ typedef dtmms_t tm_t;
 #define TM_FMT_WEEK                 DTM_FMT_WEEK
 #define TM_FMT_MONTH                DTM_FMT_MONTH
 #define TM_FMT_YEA                  DTM_FMT_YEA
-
-#include <time.h>
-
-extern time_t dtm_struct(struct tm* src);

@@ -13,19 +13,19 @@
 #include "dtm_obj.h"
 #include <time.h>
 
-int dtm_obj(long time, dtm_obj_t *obj) {
+int dtm_obj(long time, dtmo_t *obj) {
     int    err;
     struct tm *utm;
 
     utm = localtime(&time);
 
     if (utm) {
-        obj->sec   = (char) utm->tm_sec;
-        obj->min   = (char) utm->tm_min;
-        obj->hour  = (char) utm->tm_hour;
-        obj->mday  = (char) utm->tm_mday;
-        obj->month = (char) utm->tm_mon;
-        obj->year  = (short) (utm->tm_year + 1900);
+        obj->sec   = (uint8_t) utm->tm_sec;
+        obj->min   = (uint8_t) utm->tm_min;
+        obj->hour  = (uint8_t) utm->tm_hour;
+        obj->mday  = (uint8_t) utm->tm_mday;
+        obj->month = (uint8_t) utm->tm_mon;
+        obj->year  = (uint16_t) (utm->tm_year + 1900);
 
         err = 0;
     } else {
@@ -33,4 +33,14 @@ int dtm_obj(long time, dtm_obj_t *obj) {
     }
 
     return err;
+}
+
+dtm_t dtmo_tos(dtmo_t *src) {
+    dtm_t ms = 0;
+
+    ms += src->mday * 86400;
+    ms += src->hour * 3600;
+    ms += src->min * 60;
+    ms += src->sec;
+    return ms;
 }

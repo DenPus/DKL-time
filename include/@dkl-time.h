@@ -17,7 +17,6 @@
 #pragma once
 
 @include("../headers/dtmms_t.h" "#include <")
-@include("../headers/dtm_obj_t.h" "#include <")
 @include("../headers/dtmdev_ms.h" "#include <")
 @include("../headers/dtmconv.h" "#include <")
 @include("../headers/dtmstrf.h" "#include <")
